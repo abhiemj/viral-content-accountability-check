@@ -16,10 +16,12 @@ not make original accusations. To keep it credible and safe:
 - Keep contributions apolitical in tone — the goal is a fair tool, not a
   partisan one.
 
-By contributing, you agree your work is licensed under the project's
-[MIT License](LICENSE), and that you will follow our
-[Code of Conduct](CODE_OF_CONDUCT.md). Found a security issue or leaked a key? See
-[SECURITY.md](SECURITY.md) — report privately, don't open a public issue.
+By contributing, you agree your contribution is provided under the project's
+[PolyForm Noncommercial License](LICENSE), and you grant the author (abhiemj) the
+right to use your contribution — including commercially — as part of this project.
+You also agree to follow our [Code of Conduct](CODE_OF_CONDUCT.md). Found a
+security issue or leaked a key? See [SECURITY.md](SECURITY.md) — report privately,
+don't open a public issue.
 
 ## Development setup
 

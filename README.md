@@ -1,12 +1,17 @@
 # 🔎 Viral Content Accountability Check
 
 [![CI](https://github.com/abhiemj/viral-content-accountability-check/actions/workflows/ci.yml/badge.svg)](https://github.com/abhiemj/viral-content-accountability-check/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: PolyForm NC](https://img.shields.io/badge/license-PolyForm%20Noncommercial-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-Open-source tool to **fact-check claims made by news channels, ministers, and public
-figures**. Paste a claim, a quote, or a video/article URL — get back the matching
-**published fact-checks** with ratings and sources.
+Source-available tool to **fact-check claims made by news channels, ministers, and
+public figures**. Paste a claim, a quote, or a video/article URL — get back the
+matching **published fact-checks** with ratings and sources.
+
+> 📄 **Free for noncommercial use.** You may use, modify, and share this for
+> noncommercial purposes under the [PolyForm Noncommercial License](LICENSE).
+> **Commercial use is reserved to the author (abhiemj)** — contact for a
+> commercial license.
 
 ![Viral Content Accountability Check](docs/demo-hero.png)
 
@@ -216,4 +221,11 @@ CI-passing PR.
 
 ## License
 
-[MIT](LICENSE) — free to use, modify, and build on.
+[PolyForm Noncommercial License 1.0.0](LICENSE).
+
+- ✅ **Free for noncommercial use** — personal projects, research, education,
+  nonprofits, learning, and contributing are all allowed.
+- ❌ **No commercial use by others** — you may not use this software (or works
+  based on it) for commercial purposes.
+- 👤 **Commercial rights are reserved to the author (abhiemj).** Want to use it
+  commercially? Contact the author for a separate commercial license.
