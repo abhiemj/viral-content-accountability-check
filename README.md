@@ -33,26 +33,7 @@ Claude will walk you through getting a free API key, install everything (includi
 the Claude skill), and open the app for you.
 
 ```text
-Install and launch "Viral Content Accountability Check" for me. Do each step, ask me for input where needed, and confirm as you go:
-
-1. Explain how to get a FREE Google Fact Check Tools API key:
-   - Open https://console.cloud.google.com/ and create or pick a project
-   - Enable the "Fact Check Tools API"
-   - Go to APIs & Services -> Credentials -> Create credentials -> API key
-   - Edit the key -> API restrictions -> allow "Fact Check Tools API" (or "Don't restrict key")
-   Then ask me to paste the key.
-
-2. If this repo is not already in my current folder, clone it and cd into it:
-   git clone https://github.com/abhiemj/viral-content-accountability-check.git
-
-3. Save my API key into a .env file using your file-writing tool. Do NOT print the key on the command line or commit it.
-
-4. Run: python install.py
-   (this installs dependencies, copies the Claude skill into ~/.claude/skills/, and validates my key)
-
-5. Start the server in the background (uvicorn backend.main:app) and open http://127.0.0.1:8000 in the browser.
-
-6. Tell me it is ready and give me 2-3 example claims and a YouTube URL I can try.
+Set up and launch "Viral Content Accountability Check" for me from https://github.com/abhiemj/viral-content-accountability-check — clone the repo, then guide me through creating and entering a free Google Fact Check Tools API key, run `python install.py` to install the dependencies and the Claude skill, and finally start the server and open http://127.0.0.1:8000 so I can start fact-checking.
 ```
 
 Once it's done, the skill is installed too — so any time, you can just tell Claude:
