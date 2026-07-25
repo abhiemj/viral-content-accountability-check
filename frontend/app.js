@@ -3,6 +3,7 @@
 const $ = (sel) => document.querySelector(sel);
 const statusEl = $("#status");
 const resultsEl = $("#results");
+const emptyEl = $("#empty");
 
 // ---- tab switching ----
 document.querySelectorAll(".tab").forEach((tab) => {
@@ -11,10 +12,26 @@ document.querySelectorAll(".tab").forEach((tab) => {
     document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
     tab.classList.add("active");
     $("#panel-" + tab.dataset.mode).classList.add("active");
-    resultsEl.innerHTML = "";
-    statusEl.textContent = "";
+    reset();
   });
 });
+
+function reset() {
+  resultsEl.innerHTML = "";
+  statusEl.hidden = true;
+  emptyEl.hidden = false;
+}
+
+function setStatus(msg) {
+  statusEl.textContent = msg;
+  statusEl.hidden = false;
+}
+
+function setLoading(btn, on) {
+  btn.disabled = on;
+  btn.querySelector(".btn-label").style.opacity = on ? "0.7" : "1";
+  btn.querySelector(".spinner").hidden = !on;
+}
 
 // ---- helpers ----
 function esc(s) {
@@ -30,26 +47,38 @@ function fmtTime(seconds) {
   return `${m}:${s}`;
 }
 
+const VERDICT_LABEL = {
+  disputed: "Disputed",
+  supported: "Supported",
+  mixed: "Mixed",
+  reviewed: "Reviewed",
+  unverified: "Unverified",
+};
+
 function reviewHtml(r) {
   return `
     <div class="review">
-      <div><span class="rating">${esc(r.rating || "No rating")}</span>
-        — <span class="pub">${esc(r.publisher || r.publisherSite || "Unknown publisher")}</span></div>
-      ${r.title ? `<div>${esc(r.title)}</div>` : ""}
+      <div class="review-top">
+        <span class="rating">${esc(r.rating || "No rating")}</span>
+        <span class="pub">${esc(r.publisher || r.publisherSite || "Unknown publisher")}</span>
+      </div>
+      ${r.title ? `<div class="review-title">${esc(r.title)}</div>` : ""}
       ${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Read the fact-check →</a>` : ""}
     </div>`;
 }
 
 function claimBlockHtml({ claimText, verdict, results, timestamp }) {
+  const v = (verdict || "unverified").split(":")[0].trim();
+  const label = VERDICT_LABEL[v] || v;
   const reviews = results.length
     ? results.map(reviewHtml).join("")
-    : `<div class="review"><span class="pub">No published fact-check found for this claim.</span></div>`;
-  const ts = timestamp != null ? `<span class="claim-meta">⏱ ${fmtTime(timestamp)}</span>` : "";
+    : `<div class="review no-review">No published fact-check found for this claim.</div>`;
+  const ts = timestamp != null ? `<span class="ts">⏱ ${fmtTime(timestamp)}</span>` : "";
   return `
-    <div class="claim-block">
+    <div class="claim-block ${esc(v)}">
       <div class="claim-text">${esc(claimText)}</div>
       <div class="claim-meta">
-        <span class="badge ${esc(verdict)}">${esc(verdict)}</span> ${ts}
+        <span class="badge ${esc(v)}">${esc(label)}</span> ${ts}
       </div>
       ${reviews}
     </div>`;
@@ -67,33 +96,41 @@ async function postJSON(url, body) {
 }
 
 // ---- claim mode ----
-$("#btn-claim").addEventListener("click", async () => {
+$("#btn-claim").addEventListener("click", async (e) => {
+  const btn = e.currentTarget;
   const query = $("#claim-input").value.trim();
   if (!query) return;
-  resultsEl.innerHTML = "";
-  statusEl.textContent = "Searching fact-checks…";
+  reset();
+  emptyEl.hidden = true;
+  setStatus("Searching published fact-checks…");
+  setLoading(btn, true);
   try {
     const data = await postJSON("/api/verify/claim", { query });
-    statusEl.textContent = `${data.count} published fact-check(s) found.`;
+    setStatus(`${data.count} published fact-check(s) found.`);
     resultsEl.innerHTML = claimBlockHtml({
       claimText: query,
       verdict: data.verdict,
       results: data.results,
     });
   } catch (err) {
-    statusEl.textContent = "⚠ " + err.message;
+    setStatus("⚠ " + err.message);
+  } finally {
+    setLoading(btn, false);
   }
 });
 
 // ---- link mode ----
-$("#btn-link").addEventListener("click", async () => {
+$("#btn-link").addEventListener("click", async (e) => {
+  const btn = e.currentTarget;
   const url = $("#link-input").value.trim();
   if (!url) return;
-  resultsEl.innerHTML = "";
-  statusEl.textContent = "Fetching captions and extracting claims…";
+  reset();
+  emptyEl.hidden = true;
+  setStatus("Fetching captions and extracting claims…");
+  setLoading(btn, true);
   try {
     const data = await postJSON("/api/verify/link", { url });
-    statusEl.textContent = `${data.claimsFound} check-worthy claim(s) extracted from video ${data.videoId}.`;
+    setStatus(`${data.claimsFound} check-worthy claim(s) extracted from video ${data.videoId}.`);
     resultsEl.innerHTML = data.claims
       .map((c) => claimBlockHtml({
         claimText: c.claim,
@@ -102,7 +139,12 @@ $("#btn-link").addEventListener("click", async () => {
         timestamp: c.timestamp,
       }))
       .join("");
+    if (!data.claims.length) {
+      resultsEl.innerHTML = `<div class="empty"><div class="empty-ico">🤔</div><p>No check-worthy claims were found in this video's captions.</p></div>`;
+    }
   } catch (err) {
-    statusEl.textContent = "⚠ " + err.message;
+    setStatus("⚠ " + err.message);
+  } finally {
+    setLoading(btn, false);
   }
 });
