@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accountability Check</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>🔎 Accountability Check</h1>
+    <p class="tagline">
+      Verify claims from news channels &amp; public figures against Google's
+      repository of published fact-checks.
+    </p>
+  </header>
+
+  <main>
+    <div class="tabs">
+      <button class="tab active" data-mode="claim">Check a claim / text</button>
+      <button class="tab" data-mode="link">Check a YouTube link</button>
+    </div>
+
+    <section id="panel-claim" class="panel active">
+      <label for="claim-input">Paste a claim, quote, or news statement</label>
+      <textarea id="claim-input" rows="3"
+        placeholder="e.g. The government built 50,000 km of highways in 2023"></textarea>
+      <button id="btn-claim" class="primary">Verify claim</button>
+    </section>
+
+    <section id="panel-link" class="panel">
+      <label for="link-input">Paste a YouTube video URL</label>
+      <input id="link-input" type="text"
+        placeholder="https://www.youtube.com/watch?v=..." />
+      <button id="btn-link" class="primary">Fetch &amp; verify claims</button>
+      <p class="hint">Pulls the video's captions, extracts check-worthy claims,
+        and fact-checks each one.</p>
+    </section>
+
+    <div id="status" class="status"></div>
+    <div id="results"></div>
+  </main>
+
+  <footer>
+    <p>
+      Data source: <a href="https://toolbox.google.com/factcheck/explorer" target="_blank"
+      rel="noopener">Google Fact Check Tools</a>.
+      "Unverified" means no published fact-check was found — not that a claim is true or false.
+    </p>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
