@@ -17,7 +17,9 @@ not make original accusations. To keep it credible and safe:
   partisan one.
 
 By contributing, you agree your work is licensed under the project's
-[MIT License](LICENSE).
+[MIT License](LICENSE), and that you will follow our
+[Code of Conduct](CODE_OF_CONDUCT.md). Found a security issue or leaked a key? See
+[SECURITY.md](SECURITY.md) — report privately, don't open a public issue.
 
 ## Development setup
 
