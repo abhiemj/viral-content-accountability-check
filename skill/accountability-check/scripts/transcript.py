@@ -20,10 +20,13 @@ import re
 import sys
 
 from youtube_transcript_api import (
-    NoTranscriptFound,
-    TranscriptsDisabled,
+    CouldNotRetrieveTranscript,
     YouTubeTranscriptApi,
 )
+
+# Ensure UTF-8 output so non-ASCII transcripts (Hindi, symbols) don't crash on Windows.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
 _ID_RE = re.compile(r"(?:v=|youtu\.be/|/shorts/|/embed/|/live/)([A-Za-z0-9_-]{11})")
 
@@ -51,8 +54,8 @@ def main() -> int:
         return 1
 
     try:
-        segments = YouTubeTranscriptApi.get_transcript(video_id, languages=args.languages)
-    except (TranscriptsDisabled, NoTranscriptFound) as exc:
+        segments = YouTubeTranscriptApi().fetch(video_id, languages=args.languages).to_raw_data()
+    except CouldNotRetrieveTranscript as exc:
         print(json.dumps({"error": f"No transcript available: {exc}"}))
         return 1
 

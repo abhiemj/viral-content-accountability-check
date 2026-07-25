@@ -5,8 +5,7 @@ from __future__ import annotations
 import re
 
 from youtube_transcript_api import (
-    NoTranscriptFound,
-    TranscriptsDisabled,
+    CouldNotRetrieveTranscript,
     YouTubeTranscriptApi,
 )
 
@@ -32,10 +31,10 @@ def get_transcript(url: str, languages: tuple[str, ...] = ("en", "hi")) -> tuple
     if not video_id:
         raise ValueError("Could not extract a YouTube video ID from the input.")
     try:
-        segments = YouTubeTranscriptApi.get_transcript(video_id, languages=list(languages))
-    except (TranscriptsDisabled, NoTranscriptFound) as exc:
+        fetched = YouTubeTranscriptApi().fetch(video_id, languages=list(languages))
+    except CouldNotRetrieveTranscript as exc:
         raise ValueError(f"No transcript/captions available for this video: {exc}") from exc
-    return video_id, segments
+    return video_id, fetched.to_raw_data()
 
 
 def full_text(segments: list[dict]) -> str:
