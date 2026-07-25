@@ -16,8 +16,8 @@ Tools API. No separate LLM is involved.
 - `GOOGLE_FACTCHECK_API_KEY` must be set in the environment. If it is missing,
   the `factcheck.py` script returns an error — tell the user how to get a key
   (Google Cloud Console → enable "Fact Check Tools API" → create an API key).
-- Python packages: `requests`, `youtube-transcript-api`
-  (`pip install requests youtube-transcript-api`).
+- Python packages: `requests`, `youtube-transcript-api` (v1.2+)
+  (`pip install -r requirements.txt`).
 
 ## Inputs you may receive
 
@@ -30,11 +30,14 @@ Tools API. No separate LLM is involved.
 ### Step 1 — Get the content
 
 - **Text:** use it directly.
-- **YouTube URL:** run the transcript script:
+- **YouTube URL:** run the transcript script (fetches the video's captions /
+  subtitles — it does **not** transcribe audio):
   ```bash
   python scripts/transcript.py "<URL>" --text
   ```
-  If captions are unavailable, tell the user and ask for the text instead.
+  If captions are unavailable/disabled, tell the user and ask for the text
+  instead. For non-English videos, pass preferred languages:
+  `python scripts/transcript.py "<URL>" --languages hi en --text`.
 - **Article URL:** read it with WebFetch.
 
 ### Step 2 — Extract check-worthy claims (your judgement)

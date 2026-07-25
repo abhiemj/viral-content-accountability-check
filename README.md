@@ -1,5 +1,10 @@
 # 🔎 Accountability Check
 
+<!-- Replace <your-username> with your GitHub handle to activate the badge. -->
+[![CI](https://github.com/<your-username>/accountability-check/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-username>/accountability-check/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 Open-source tool to **fact-check claims made by news channels, ministers, and public
 figures**. Paste a claim, a quote, or a video/article URL — get back the matching
 **published fact-checks** with ratings and sources.
@@ -141,14 +146,32 @@ pytest
 
 ## Roadmap / ideas for contributors
 
-- [ ] Support more sources: article-URL scraping, Twitter/X, Instagram
-- [ ] Local Whisper transcription for videos without captions
+- [x] YouTube caption fetching + claim extraction + fact-check pipeline
+- [ ] Article-URL mode (scrape + fact-check a news article's text)
+- [ ] Better claim extraction in the web app (smarter sentence filtering)
+- [ ] Local Whisper transcription for videos **without** captions
 - [ ] Multi-language claim matching (Hindi + regional languages)
-- [ ] Cache verified videos so results are instant on repeat views
-- [ ] A browser extension frontend on top of this same API
+- [ ] Cache verified videos so repeat checks are instant
+- [ ] A browser-extension frontend on top of this same API
 - [ ] Pull from additional fact-check aggregators beyond Google
 
-PRs welcome — see the issues tab.
+## Contributing
+
+Contributions are very welcome — see **[CONTRIBUTING.md](CONTRIBUTING.md)** for
+setup, workflow, and ground rules.
+
+The short version:
+
+1. **Fork** the repo and create a branch (`feat/...`, `fix/...`).
+2. Make your change, add tests, and run `pytest -q`.
+3. Open a **Pull Request** against `main` — CI must pass and a maintainer reviews.
+
+`main` is protected: no direct pushes, and every change lands through a reviewed,
+CI-passing PR.
+
+> **Maintainers:** see **[MAINTAINERS.md](MAINTAINERS.md)** for how to publish the
+> repo and configure branch protection so `main` stays secure while the project
+> is open to contributors.
 
 ---
 
