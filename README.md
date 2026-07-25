@@ -8,6 +8,8 @@ Open-source tool to **fact-check claims made by news channels, ministers, and pu
 figures**. Paste a claim, a quote, or a video/article URL — get back the matching
 **published fact-checks** with ratings and sources.
 
+![Viral Content Accountability Check](docs/demo-hero.png)
+
 It uses the **[Google Fact Check Tools API](https://developers.google.com/fact-check/tools/api)**
 — the same data source that powers the public
 [Fact Check Explorer](https://toolbox.google.com/factcheck/explorer).
