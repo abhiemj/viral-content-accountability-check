@@ -25,6 +25,23 @@ There are **two ways to use it**:
 
 ---
 
+## 🎬 Demo
+
+Verifying a claim by pasting text and hitting **Verify claim**:
+
+<video
+  src="https://github.com/abhiemj/viral-content-accountability-check/raw/main/docs/demo.mp4"
+  poster="https://github.com/abhiemj/viral-content-accountability-check/raw/main/docs/demo-poster.png"
+  controls
+  muted
+  width="100%">
+</video>
+
+> If the player doesn't load in your browser,
+> [click here to watch the demo »](https://github.com/abhiemj/viral-content-accountability-check/raw/main/docs/demo.mp4)
+
+---
+
 ## ⚡ Quick install with Claude (one paste)
 
 If you use **[Claude Code](https://claude.com/claude-code)**, you don't have to run
