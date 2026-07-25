@@ -1,0 +1,6 @@
+# Code owners are automatically requested for review on any Pull Request.
+# Replace @your-username below with your actual GitHub handle (keep the @).
+# You can add per-directory owners too, e.g.:
+#   /backend/  @your-username @some-collaborator
+
+* @your-username
