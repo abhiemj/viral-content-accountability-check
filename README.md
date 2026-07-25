@@ -27,18 +27,11 @@ There are **two ways to use it**:
 
 ## 🎬 Demo
 
-Verifying a claim by pasting text and hitting **Verify claim**:
+Paste a claim, hit **Verify claim**, and get sourced fact-checks with verdicts:
 
-<video
-  src="https://github.com/abhiemj/viral-content-accountability-check/raw/main/docs/demo.mp4"
-  poster="https://github.com/abhiemj/viral-content-accountability-check/raw/main/docs/demo-poster.png"
-  controls
-  muted
-  width="100%">
-</video>
+[![Viral Content Accountability Check — demo](docs/demo-poster.png)](https://github.com/abhiemj/viral-content-accountability-check/raw/main/docs/demo.mp4)
 
-> If the player doesn't load in your browser,
-> [click here to watch the demo »](https://github.com/abhiemj/viral-content-accountability-check/raw/main/docs/demo.mp4)
+▶️ **[Watch the full demo video »](https://github.com/abhiemj/viral-content-accountability-check/raw/main/docs/demo.mp4)**
 
 ---
 
