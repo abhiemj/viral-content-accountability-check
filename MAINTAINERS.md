@@ -5,18 +5,17 @@ without review and passing tests. Here's how to lock it down after you push.
 
 ## 1. Push the repo, then make it public
 
+First create an **empty** repo named `viral-videos-accountability-check` on
+GitHub (no README/license — this repo already has them), then:
+
 ```bash
 git branch -M main
-git remote add origin https://github.com/<your-username>/accountability-check.git
+git remote add origin https://github.com/abhiemj/viral-videos-accountability-check.git
 git push -u origin main
 ```
 
 Then on GitHub: **Settings → General → Danger Zone → Change visibility → Public**
 (so developers can find and fork it).
-
-Also replace the placeholders:
-- `@your-username` in [`.github/CODEOWNERS`](.github/CODEOWNERS)
-- `<your-username>` in the README badges
 
 ## 2. Protect the `main` branch
 

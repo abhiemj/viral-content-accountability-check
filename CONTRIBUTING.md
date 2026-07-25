@@ -25,8 +25,8 @@ By contributing, you agree your work is licensed under the project's
 
 ```bash
 # 1. Fork the repo on GitHub, then clone your fork
-git clone https://github.com/<your-username>/accountability-check.git
-cd accountability-check
+git clone https://github.com/abhiemj/viral-videos-accountability-check.git
+cd viral-videos-accountability-check
 
 # 2. Create a virtual environment
 python -m venv .venv

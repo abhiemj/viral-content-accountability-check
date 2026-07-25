@@ -1,7 +1,6 @@
-# 🔎 Accountability Check
+# 🔎 Viral Videos Accountability Check
 
-<!-- Replace <your-username> with your GitHub handle to activate the badge. -->
-[![CI](https://github.com/<your-username>/accountability-check/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-username>/accountability-check/actions/workflows/ci.yml)
+[![CI](https://github.com/abhiemj/viral-videos-accountability-check/actions/workflows/ci.yml/badge.svg)](https://github.com/abhiemj/viral-videos-accountability-check/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
@@ -45,8 +44,8 @@ There are **two ways to use it**:
 
 ### 2. Install & configure
 ```bash
-git clone https://github.com/<your-username>/accountability-check.git
-cd accountability-check
+git clone https://github.com/abhiemj/viral-videos-accountability-check.git
+cd viral-videos-accountability-check
 python -m venv .venv && source .venv/bin/activate   # on Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 cp .env.example .env        # then paste your key into .env
