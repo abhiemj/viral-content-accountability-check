@@ -31,7 +31,7 @@ jobs:
           pip install pytest
 
       - name: Run tests
-        run: pytest -q
+        run: python -m pytest -q
 
       - name: Check the app imports cleanly
         run: python -c "from backend.main import app; print('import OK')"
